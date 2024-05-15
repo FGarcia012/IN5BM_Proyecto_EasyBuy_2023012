@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fredygarcia.controller.MenuPrincipalController">
+   <children>
+      <ImageView fitHeight="619.0" fitWidth="619.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MenuPrinciapal.png" />
+         </image>
+      </ImageView>
+      <MenuBar id="menubar" prefHeight="6.0" prefWidth="619.0" style="-fx-background-color: #F27405; -fx-border-radius: 0 0 8 0; -fx-border-color: white; -fx-background-radius: 0 0 8 0;" stylesheets="@../resource/EasyBuy_2023012CSS.css">
+        <menus>
+          <Menu mnemonicParsing="false" text="Modulo">
+            <items>
+              <MenuItem id="Tipo de Productos" fx:id="btnTipoProductos" mnemonicParsing="false" onAction="#handleButtonAction" text="Tipo De Productos" />
+                  <MenuItem id="Proveedores" fx:id="btnProveedores" mnemonicParsing="false" onAction="#handleButtonAction" text="Proveedores" />
+                  <MenuItem id="Clientes" fx:id="btnClientes" mnemonicParsing="false" onAction="#handleButtonAction" text="Clientes" />
+                  <MenuItem id="Empleados" fx:id="btnEmpleados" mnemonicParsing="false" onAction="#handleButtonAction" text="Empleados" />
+                  <MenuItem id="Compras" fx:id="btnCompras" mnemonicParsing="false" onAction="#handleButtonAction" text="Compras" />
+                  <MenuItem id="Productos" fx:id="btnProductos" mnemonicParsing="false" onAction="#handleButtonAction" text="Productos" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Reportes">
+            <items>
+              <MenuItem id="Venta" mnemonicParsing="false" text="Venta" />
+                  <MenuItem id="Inventario" mnemonicParsing="false" text="Inventario" />
+                  <MenuItem id="Salario" mnemonicParsing="false" text="Salario" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Acerca de ">
+            <items>
+              <MenuItem id="Ayuda" mnemonicParsing="false" text="Ayuda" />
+                  <MenuItem id="Programador" fx:id="btnProgramador" mnemonicParsing="false" onAction="#handleButtonAction" text="Programador" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="269.0" fitWidth="441.0" layoutX="250.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Isotipo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="121.0" layoutY="377.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="111.0" style="-fx-background-color: #F27405;" text="Ubicaciones" />
+      <Button layoutX="121.0" layoutY="448.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="111.0" style="-fx-background-color: #F27405;" text="Inventario" />
+      <Button layoutX="369.0" layoutY="377.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="111.0" style="-fx-background-color: #F27405;" text="Usuarios en linea" />
+      <Button layoutX="369.0" layoutY="448.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="111.0" style="-fx-background-color: #F27405;" text="Horarios" />
+   </children>
+</AnchorPane>

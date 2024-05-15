@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fredygarcia.controller.MenuComprasController">
+   <children>
+      <ImageView fitHeight="427.0" fitWidth="752.0" layoutX="-1.0" layoutY="-1.0">
+         <image>
+            <Image url="@../images/MenuCompras.png" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="66.0" layoutY="206.0" prefHeight="160.0" prefWidth="134.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnAgregar" maxWidth="150.0" mnemonicParsing="false" onAction="#Agregar" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Agregar" />
+            <Button fx:id="btnEliminar" maxWidth="150.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Eliminar" GridPane.rowIndex="1" />
+            <Button fx:id="btnEditar" maxWidth="150.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Editar" GridPane.rowIndex="2" />
+            <Button fx:id="btnReporte" maxWidth="150.0" mnemonicParsing="false" onAction="#reporte" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Reportes" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Button fx:id="btnMenuD" layoutX="107.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #012340;" styleClass="button-regresar" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="MENU" />
+      <TableView fx:id="tblCompras" layoutX="209.0" layoutY="166.0" onMouseClicked="#seleccionarElementos" prefHeight="225.0" prefWidth="500.0">
+        <columns>
+          <TableColumn fx:id="ColumnNumDocumento" minWidth="125.0" prefWidth="125.0" text="numDocumento" />
+          <TableColumn fx:id="ColumnFechaDocumento" minWidth="125.0" prefWidth="125.0" text="fechaDocumento" />
+            <TableColumn fx:id="ColumnDescripcion" minWidth="125.0" prefWidth="125.0" text="descripcion" />
+            <TableColumn fx:id="columnTotalDocumento" minWidth="125.0" prefWidth="125.0" text="totalDocumento" />
+        </columns>
+      </TableView>
+      <GridPane layoutX="139.0" layoutY="30.0" prefHeight="130.0" prefWidth="324.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.20001220703125" minWidth="10.0" prefWidth="133.20001220703125" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.79998779296875" minWidth="10.0" prefWidth="190.79998779296875" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="txtNumDocumento" GridPane.columnIndex="1" />
+            <TextField fx:id="txtDescripcion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtTotalDocumento" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="162.0" prefWidth="305.0" text="numDocumento" textFill="WHITE" />
+            <Label alignment="CENTER" prefHeight="120.0" prefWidth="203.0" text="fechaDocumento" textFill="WHITE" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="207.0" prefWidth="215.0" text="totalDocumento" textFill="WHITE" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="116.0" prefWidth="159.0" text="descripcion" textFill="WHITE" GridPane.rowIndex="2" />
+            <TextField fx:id="txtFechaDocumento" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
