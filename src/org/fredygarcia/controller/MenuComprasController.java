@@ -269,7 +269,7 @@ public class MenuComprasController implements Initializable {
 
     public void limpiarControles() {
         txtNumDocumento.clear();
-        txtFechaDocumento.clear(); // Limpiar el DatePicker
+        txtFechaDocumento.clear();
         txtDescripcion.clear();
         txtTotalDocumento.clear();
     }

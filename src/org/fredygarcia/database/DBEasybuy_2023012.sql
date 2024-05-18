@@ -1,56 +1,57 @@
-set global time_zone = '-6:00';
-drop database if exists DBEasybuy_2023012;
-create database DBEasybuy_2023012;
-use DBEasybuy_2023012;
+SET GLOBAL time_zone = '-6:00';
+
+DROP DATABASE IF EXISTS DBEasybuy_2023012;
+CREATE DATABASE DBEasybuy_2023012;
+USE DBEasybuy_2023012;
 
 create table Clientes (
-	IDClientes int,
-    nombreClientes varchar (50),
-    apellidosClientes varchar (50),
-	NITClientes varchar (10),
-	telefonoClientes varchar (45),
-	direccionClientes varchar(150),
-	correoClientes varchar (45),
-	primary key PK_Clientes(IDClientes)
-	);
+    IDClientes int,
+    nombreClientes varchar(50),
+    apellidosClientes varchar(50),
+    NITClientes varchar(10),
+    telefonoClientes varchar(45),
+    direccionClientes varchar(150),
+    correoClientes varchar(45),
+    PRIMARY KEY (IDClientes)
+);
 
 create table CargoEmpleado (
-	IDCargoEmpleado int ,
-    nombreCargo varchar (45),
-    descripcionCargo varchar (45),
-    primary key PK_CargoEmpleado(IDCargoEmpleado)
+    IDCargoEmpleado int,
+    nombreCargo varchar(45),
+    descripcionCargo varchar(45),
+    PRIMARY KEY (IDCargoEmpleado)
 );
 
-create table TipoProducto(
-	IDTipoProducto int ,
-    descripcion varchar (45),
-    primary key PK_TipoProducto(IDTipoProducto)
+create table TipoProducto (
+    IDTipoProducto int,
+    descripcion varchar(45),
+    PRIMARY KEY (IDTipoProducto)
 );
 
-create table Compras(
-    numDocumento int ,
+create table Compras (
+    numDocumento int,
     fechaDocumento date,
     descripcion varchar(60),
     totalDocumento decimal(20,2),
-    primary key PK_Compras(numDocumento)
+    PRIMARY KEY (numDocumento)
 );
 
-create table Proveedores(
-	IDProveedor int,
+create table Proveedores (
+    IDProveedor int,
     nombresProveedor varchar(50),
-    apellidosProveedor varchar (50),
+    apellidosProveedor varchar(50),
     NITProveedor varchar(10),
-    telefonoProveedor varchar (45),
-    direccionProveedor varchar (150),
+    telefonoProveedor varchar(45),
+    direccionProveedor varchar(150),
     correoProveedor varchar(45),
-    razonSocial varchar (45),
-    contactoPrincipal varchar (100),
+    razonSocial varchar(45),
+    contactoPrincipal varchar(100),
     paginaWeb varchar(45),
-    primary key PK_Proveedores(IDProveedor)
+    PRIMARY KEY (IDProveedor)
 );
 
-create table Productos(
-	IDProductos varchar(15),
+create table Productos (
+    IDProductos varchar(15),
     descProducto varchar(45),
     precioUnitario decimal(10,2),
     precioDocena decimal(10,2),
@@ -59,10 +60,76 @@ create table Productos(
     existencia int,
     IDTipoProducto int,
     IDProveedor int,
-    primary key PK_Productos(IDProductos),
-    foreign key (IDTipoProducto) references TipoProducto(IDTipoProducto),
-    foreign key (IDProveedor) references Proveedores(IDProveedor)
+    PRIMARY KEY (IDProductos),
+    FOREIGN KEY (IDTipoProducto) REFERENCES TipoProducto(IDTipoProducto),
+    FOREIGN KEY (IDProveedor) REFERENCES Proveedores(IDProveedor)
 );
+
+create table Empleados (
+    IDEmpleados int,
+    nombresEmpleado varchar(45),
+    apellidosEmpleado varchar(45),
+    sueldo decimal(10,2),
+    direccion varchar(150),
+    turno varchar(15),
+    IDCargoEmpleado int,
+    PRIMARY KEY (IDEmpleados),
+    FOREIGN KEY (IDCargoEmpleado) REFERENCES CargoEmpleado(IDCargoEmpleado)
+);
+
+create table Factura (
+    numFactura int,
+    estado varchar(45),
+    totalFactura decimal(10,2),
+    fechaFactura varchar(45),
+    IDClientes int,
+    IDEmpleados int,
+    PRIMARY KEY (numFactura),
+    FOREIGN KEY (IDClientes) REFERENCES Clientes(IDClientes),
+    FOREIGN KEY (IDEmpleados) REFERENCES Empleados(IDEmpleados)
+);
+
+create table DetalleFactura (
+    IDDetalleFactura int,
+    precioUnitario decimal(10,2),
+    cantidad int,
+    numFactura int,
+    IDProductos varchar(15),
+    PRIMARY KEY (IDDetalleFactura),
+    FOREIGN KEY (numFactura) REFERENCES Factura(numFactura),
+    FOREIGN KEY (IDProductos) REFERENCES Productos(IDProductos)
+);
+
+create table DetalleCompra (
+    IDDetalleCompra int,
+    costoUnitario decimal(10,2),
+    cantidad int,
+    IDProductos varchar(15),
+    numDocumento int,
+    PRIMARY KEY (IDDetalleCompra),
+    FOREIGN KEY (IDProductos) REFERENCES Productos(IDProductos),
+    FOREIGN KEY (numDocumento) REFERENCES Compras(numDocumento)
+);
+
+create table TelefonoProveedor (
+    IDTelefonoProveedor int,
+    numeroPrincipal varchar(8),
+    numeroSecundario varchar(8),
+    observaciones varchar(45),
+    IDProveedor int,
+    PRIMARY KEY (IDTelefonoProveedor),
+    FOREIGN KEY (IDProveedor) REFERENCES Proveedores(IDProveedor)
+);
+
+create table EmailProveedor (
+    IDEmailProveedor int,
+    emailProveedor varchar(45),
+    descripcion varchar(100),
+    IDProveedor int,
+    PRIMARY KEY (IDEmailProveedor),
+    FOREIGN KEY (IDProveedor) REFERENCES Proveedores(IDProveedor)
+);
+
 
 delimiter $$
 
@@ -517,4 +584,404 @@ end$$
 
 delimiter ;
 
-call sp_EliminarProductos('P002');
+call sp_EliminarProductos('P001');
+
+-- Empleados
+ 
+ delimiter $$
+
+create procedure sp_AgregarEmpleados(in IDEmpleados int,in nombresEmpleado varchar(45), in apellidosEmpleado varchar(45), in sueldo decimal(10,2),in direccion varchar(150), in turno varchar(15), in IDCargoEmpleado int
+)
+begin
+    insert into Empleados (IDEmpleados, nombresEmpleado, apellidosEmpleado, sueldo, direccion, turno, IDCargoEmpleado)
+    values (IDEmpleados, nombresEmpleado, apellidosEmpleado, sueldo, direccion, turno, IDCargoEmpleado);
+end$$
+
+delimiter ;
+
+call sp_AgregarEmpleados(1,'Juan', 'Gonzales', 1500.00, 'Avenida Lomas Turbias', 'Matutina', 2);
+call sp_AgregarEmpleados(2,'Edgar', 'Morales', 2875.00, 'Avenida 12 calle 3 zona 15', 'vespertina', 2);
+
+delimiter $$
+create procedure sp_ListarEmpleados()
+begin
+    select IDEmpleados, nombresEmpleado, apellidosEmpleado, sueldo, direccion, turno, IDCargoEmpleado from Empleados;
+end$$
+delimiter ;
+
+call sp_ListarEmpleados();
+
+delimiter $$
+
+create procedure sp_BuscarEmpleados(in _IDEmpleados int)
+begin
+    select * from Empleados where IDEmpleados = _IDEmpleados;
+end$$
+
+delimiter ;
+
+call sp_BuscarProductos(1);
+
+delimiter $$
+
+create procedure sp_ActualizarEmpleados(
+    in _IDEmpleados int, in nombresEmpleado varchar(45), in apellidosEmpleado varchar(45),
+    in sueldo decimal(10,2), in direccion varchar(150), in turno varchar(15),
+    in IDCargoEmpleado int)
+begin
+    update Empleados
+    set
+        nombresEmpleado = nombresEmpleado,
+        apellidosEmpleado = apellidosEmpleado,
+        sueldo = sueldo,
+        direccion = direccion,
+        IDCargoEmpleado = IDCargoEmpleado
+    where
+        IDEmpleados = _IDEmpleados;
+end$$
+
+delimiter ;
+
+call sp_ActualizarEmpleados(2,'Juan', 'Gonzales', 1500.00, 'Avenida 12 calle 3 zona 15', 'Matutina', 2);
+
+delimiter $$
+
+create procedure sp_EliminarEmpleados(in _IDEmpleados int)
+begin
+    delete from Empleados where IDEmpleados = _IDEmpleados;
+end$$
+
+delimiter ;
+
+call sp_EliminarEmpleados(1);
+
+-- Factura
+ 
+ delimiter $$
+
+create procedure sp_AgregarFactura(in numFactura int,in estado varchar(45), in totalFactura decimal(10,2), in fechaFactura varchar(45),in IDClientes int, in IDEmpleados int
+)
+begin
+    insert into Factura (numFactura, estado, totalFactura, fechaFactura, IDClientes, IDEmpleados)
+    values (numFactura, estado, totalFactura, fechaFactura, IDClientes, IDEmpleados);
+end$$
+
+delimiter ;
+
+call sp_AgregarFactura(1, 'Pendiente', 150.75, '2024-05-16', 2, 2);
+call sp_AgregarFactura(2, 'Pagado', 140.00, '2024-05-16', 2, 2);
+
+delimiter $$
+create procedure sp_ListarFactura()
+begin
+    select numFactura, estado, totalFactura, fechaFactura, IDClientes, IDEmpleados from Factura;
+end$$
+delimiter ;
+
+call sp_ListarFactura();
+
+delimiter $$
+
+create procedure sp_BuscarFactura(in _numFactura int)
+begin
+    select * from Factura where numFactura = _numFactura;
+end$$
+
+delimiter ;
+
+call sp_BuscarFactura(1);
+
+delimiter $$
+
+create procedure sp_ActualizarFactura(
+    in _numFactura int, in estado varchar(45), in totalFactura decimal(10,2),
+    in fechaFactura varchar(45), in IDClientes int, in IDEmpleados int)
+begin
+    update Factura
+    set
+        estado = estado,
+        totalFactura = totalFactura,
+        fechaFactura = fechaFactura,
+        IDClientes = IDClientes,
+        IDEmpleados = IDEmpleados
+    where
+        numFactura = _numFactura;
+end$$
+
+delimiter ;
+
+call sp_ActualizarFactura(2, 'Pendiente', 1500.00, '2024-05-16', 2, 2);
+
+delimiter $$
+
+create procedure sp_EliminarFactura(in _numFactura int)
+begin
+    delete from Factura where numFactura = _numFactura;
+end$$
+
+delimiter ;
+
+call sp_EliminarFactura(1);
+
+-- DetalleFactura
+ 
+ delimiter $$
+
+create procedure sp_AgregarDetalleFactura(in IDDetalleFactura int,in precioUnitario decimal(10,2), in cantidad int, in numFactura int,in IDProductos varchar(15)
+)
+begin
+    insert into DetalleFactura (IDDetalleFactura, precioUnitario, cantidad, numFactura, IDProductos)
+    values (IDDetalleFactura, precioUnitario, cantidad, numFactura, IDProductos);
+end$$
+
+delimiter ;
+
+call sp_AgregarDetalleFactura(1, 1500.75, 2, 2, 'P002');
+call sp_AgregarDetalleFactura(2, 150.75, 10, 2, 'P002');
+
+delimiter $$
+create procedure sp_ListarDetalleFactura()
+begin
+    select IDDetalleFactura, precioUnitario, cantidad, numFactura, IDProductos from DetalleFactura;
+end$$
+delimiter ;
+
+call sp_ListarDetalleFactura();
+
+delimiter $$
+
+create procedure sp_BuscarDetalleFactura(in _IDDetalleFactura int)
+begin
+    select * from DetalleFactura where IDDetalleFactura = _IDDetalleFactura;
+end$$
+
+delimiter ;
+
+call sp_BuscarDetalleFactura(1);
+
+delimiter $$
+
+create procedure sp_ActualizarDetalleFactura(
+    in _IDDetalleFactura int,in precioUnitario decimal(10,2), in cantidad int, in numFactura int,in IDProductos varchar(15))
+begin
+    update DetalleFactura
+    set
+        precioUnitario = precioUnitario,
+        cantidad = cantidad,
+        numFactura = numFactura,
+        IDProductos = IDProductos
+    where
+        IDDetalleFactura = _IDDetalleFactura;
+end$$
+
+delimiter ;
+
+call sp_ActualizarDetalleFactura(2, 1500.00, 4, 2, 'P002');
+
+delimiter $$
+
+create procedure sp_EliminarDetalleFactura(in _IDDetalleFactura int)
+begin
+    delete from DetalleFactura where IDDetalleFactura = _IDDetalleFactura;
+end$$
+
+delimiter ;
+
+call sp_EliminarDetalleFactura(1);
+
+-- DetalleCompra
+ 
+ delimiter $$
+
+create procedure sp_AgregarDetalleCompra(in IDDetalleCompra int,in costoUnitario decimal(10,2), in cantidad int, in IDProductos varchar(15),in numDocumento int
+)
+begin
+    insert into DetalleCompra (IDDetalleCompra, costoUnitario, cantidad, IDProductos, numDocumento)
+    values (IDDetalleCompra, costoUnitario, cantidad, IDProductos, numDocumento);
+end$$
+
+delimiter ;
+
+call sp_AgregarDetalleCompra(1, 15, 15, 'P002', 2);
+call sp_AgregarDetalleCompra(2, 25, 10, 'P002', 2);
+
+delimiter $$
+create procedure sp_ListarDetalleCompra()
+begin
+    select IDDetalleCompra, costoUnitario, cantidad, IDProductos, numDocumento from DetalleCompra;
+end$$
+delimiter ;
+
+call sp_ListarDetalleCompra();
+
+delimiter $$
+
+create procedure sp_BuscarDetalleCompra(in _IDDetalleCompra int)
+begin
+    select * from DetalleCompra where IDDetalleCompra = _IDDetalleCompra;
+end$$
+
+delimiter ;
+
+call sp_BuscarDetalleCompra(1);
+
+delimiter $$
+
+create procedure sp_ActualizarDetalleCompra(
+    in _IDDetalleCompra int,in costoUnitario decimal(10,2), in cantidad int, in IDProductos varchar(15),in numDocumento int)
+begin
+    update DetalleCompra
+    set
+        costoUnitario = costoUnitario,
+        cantidad = cantidad,
+        IDProductos = IDProductos,
+        numDocumento = numDocumento
+    where
+        IDDetalleCompra = _IDDetalleCompra;
+end$$
+
+delimiter ;
+
+call sp_ActualizarDetalleCompra(2,15, 7, 'P002', 2);
+
+delimiter $$
+
+create procedure sp_EliminarDetalleCompra(in _IDDetalleCompra int)
+begin
+    delete from DetalleCompra where IDDetalleCompra = _IDDetalleCompra;
+end$$
+
+delimiter ;
+
+call sp_EliminarDetalleCompra(1);
+
+-- TelefonoProveedor
+ 
+ delimiter $$
+
+create procedure sp_AgregarTelefonoProveedor(in IDTelefonoProveedor int,in numeroPrincipal varchar(8), in numeroSecundario varchar(8), in observaciones varchar(45),in IDProveedor int
+)
+begin
+    insert into TelefonoProveedor (IDTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, IDProveedor)
+    values (IDTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, IDProveedor);
+end$$
+
+delimiter ;
+
+call sp_AgregarTelefonoProveedor(1, '25698535', '14526987', 'Son ambos numeros personales', 2);
+call sp_AgregarTelefonoProveedor(2, '12345678', '87654321', 'Son ambos numeros personales', 2);
+
+delimiter $$
+create procedure sp_ListarTelefonoProveedor()
+begin
+    select IDTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, IDProveedor from TelefonoProveedor;
+end$$
+delimiter ;
+
+call sp_ListarTelefonoProveedor();
+
+delimiter $$
+
+create procedure sp_BuscarTelefonoProveedor(in _IDTelefonoProveedor int)
+begin
+    select * from TelefonoProveedor where IDTelefonoProveedor = _IDTelefonoProveedor;
+end$$
+
+delimiter ;
+
+call sp_BuscarTelefonoProveedor(1);
+
+delimiter $$
+
+create procedure sp_ActualizarTelefonoProveedor(
+    in _IDTelefonoProveedor int,in numeroPrincipal varchar(8), in numeroSecundario varchar(8), in observaciones varchar(45),in IDProveedor int)
+begin
+    update TelefonoProveedor
+    set
+        numeroPrincipal = numeroPrincipal,
+        numeroSecundario = numeroSecundario,
+        observaciones = observaciones,
+        IDProveedor = IDProveedor
+    where
+        IDTelefonoProveedor = _IDTelefonoProveedor;
+end$$
+
+delimiter ;
+
+call sp_ActualizarTelefonoProveedor(2, '25698535', '14526987', 'Son ambos numeros personales', 2);
+
+delimiter $$
+
+create procedure sp_EliminarTelefonoProveedor(in _IDTelefonoProveedor int)
+begin
+    delete from TelefonoProveedor where IDTelefonoProveedor = _IDTelefonoProveedor;
+end$$
+
+delimiter ;
+
+call sp_EliminarTelefonoProveedor(1);
+
+-- EmailProveedor
+ 
+ delimiter $$
+
+create procedure sp_AgregarEmailProveedor(in IDEmailProveedor int,in emailProveedor varchar(45), in descripcion varchar(100), in IDProveedor int
+)
+begin
+    insert into EmailProveedor (IDEmailProveedor, emailProveedor, descripcion, IDProveedor)
+    values (IDEmailProveedor, emailProveedor, descripcion, IDProveedor);
+end$$
+
+delimiter ;
+
+call sp_AgregarEmailProveedor(1, 'fgarcia@hotmail', 'correo Personal', 2);
+call sp_AgregarEmailProveedor(2, 'fSicajau@hotmail', 'correo de empresa', 2);
+
+delimiter $$
+create procedure sp_ListarEmailProveedor()
+begin
+    select IDEmailProveedor, emailProveedor, descripcion, IDProveedor from EmailProveedor;
+end$$
+delimiter ;
+
+call sp_ListarEmailProveedor();
+
+delimiter $$
+
+create procedure sp_BuscarEmailProveedor(in _IDEmailProveedor int)
+begin
+    select * from EmailProveedor where IDEmailProveedor = _IDEmailProveedor;
+end$$
+
+delimiter ;
+
+call sp_BuscarEmailProveedor(1);
+
+delimiter $$
+
+create procedure sp_ActualizarEmailProveedor(
+    in _IDEmailProveedor int,in emailProveedor varchar(45), in descripcion varchar(100), in IDProveedor int)
+begin
+    update EmailProveedor
+    set
+        emailProveedor = emailProveedor,
+        descripcion = descripcion,
+        IDProveedor = IDProveedor
+    where
+        IDEmailProveedor = _IDEmailProveedor;
+end$$
+
+delimiter ;
+
+call sp_ActualizarEmailProveedor(2, 'fgarcia@hotmail', 'correo Personal', 2);
+
+delimiter $$
+
+create procedure sp_EliminarEmailProveedor(in _IDEmailProveedor int)
+begin
+    delete from EmailProveedor where IDEmailProveedor = _IDEmailProveedor;
+end$$
+
+delimiter ;
+
+call sp_EliminarEmailProveedor(1);
