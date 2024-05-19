@@ -30,7 +30,7 @@ public class MenuPrincipalController implements Initializable{
     private MenuItem btnProveedores;
     
     @FXML
-    private MenuItem btnEmpleados;
+    private MenuItem btnCargoEmpleados;
     
     @FXML
     private MenuItem btnCompras;
@@ -40,6 +40,24 @@ public class MenuPrincipalController implements Initializable{
     
     @FXML
     private MenuItem btnProductos;
+    
+    @FXML
+    private MenuItem btnEmpleados;
+    
+    @FXML
+    private MenuItem btnFactura;
+    
+    @FXML
+    private MenuItem btnDetalleFactura;
+    
+    @FXML
+    private MenuItem btnDetalleCompra;
+    
+    @FXML
+    private MenuItem btnTelefonoProveedor;
+    
+    @FXML
+    private MenuItem btnEmailProveedor;
      
     @Override
     public void initialize(URL location,ResourceBundle Resources){
@@ -78,12 +96,12 @@ public class MenuPrincipalController implements Initializable{
         this.btnProveedores = btnProveedores;
     }
 
-    public MenuItem getBtnEmpleados() {
-        return btnEmpleados;
+    public MenuItem getBtnCargoEmpleados() {
+        return btnCargoEmpleados;
     }
 
-    public void setBtnEmpleados(MenuItem btnEmpleados) {
-        this.btnEmpleados = btnEmpleados;
+    public void setBtnCargoEmpleados(MenuItem btnCargoEmpleados) {
+        this.btnCargoEmpleados = btnCargoEmpleados;
     }
 
     public MenuItem getBtnCompras() {
@@ -108,7 +126,55 @@ public class MenuPrincipalController implements Initializable{
 
     public void setBtnProductos(MenuItem btnProductos) {
         this.btnProductos = btnProductos;
-    } 
+    }
+
+    public MenuItem getBtnEmpleados() {
+        return btnEmpleados;
+    }
+
+    public void setBtnEmpleados(MenuItem btnEmpleados) {
+        this.btnEmpleados = btnEmpleados;
+    }
+
+    public MenuItem getBtnFactura() {
+        return btnFactura;
+    }
+
+    public void setBtnFactura(MenuItem btnFactura) {
+        this.btnFactura = btnFactura;
+    }
+
+    public MenuItem getBtnDetalleFactura() {
+        return btnDetalleFactura;
+    }
+
+    public void setBtnDetalleFactura(MenuItem btnDetalleFactura) {
+        this.btnDetalleFactura = btnDetalleFactura;
+    }
+
+    public MenuItem getBtnDetalleCompra() {
+        return btnDetalleCompra;
+    }
+
+    public void setBtnDetalleCompra(MenuItem btnDetalleCompra) {
+        this.btnDetalleCompra = btnDetalleCompra;
+    }
+
+    public MenuItem getBtnTelefonoProveedor() {
+        return btnTelefonoProveedor;
+    }
+
+    public void setBtnTelefonoProveedor(MenuItem btnTelefonoProveedor) {
+        this.btnTelefonoProveedor = btnTelefonoProveedor;
+    }
+
+    public MenuItem getBtnEmailProveedor() {
+        return btnEmailProveedor;
+    }
+
+    public void setBtnEmailProveedor(MenuItem btnEmailProveedor) {
+        this.btnEmailProveedor = btnEmailProveedor;
+    }
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -116,14 +182,26 @@ public class MenuPrincipalController implements Initializable{
             escenarioPrincipal.menuClienteView();
         }if(event.getSource() == btnProveedores){
             escenarioPrincipal.menuProveedoresView();
-        }if(event.getSource() == btnEmpleados){
-            escenarioPrincipal.menuEmpleadosView();
+        }if(event.getSource() == btnCargoEmpleados){
+            escenarioPrincipal.menuCargoEmpleadosView();
         }if(event.getSource() == btnCompras){
             escenarioPrincipal.menuComprasView();
         }if(event.getSource() == btnTipoProductos){
             escenarioPrincipal.menuTipoProductosView();
         }if(event.getSource() == btnProductos){
             escenarioPrincipal.menuProductosView();
+        }if(event.getSource() == btnEmpleados){
+            escenarioPrincipal.menuEmpleadosView();
+        }if(event.getSource() == btnFactura){
+            escenarioPrincipal.menuFacturaView();
+        }if(event.getSource() == btnDetalleFactura){
+            escenarioPrincipal.menuDetalleFacturaView();
+        }if(event.getSource() == btnDetalleCompra){
+            escenarioPrincipal.menuDetalleCompraView();
+        }if(event.getSource() == btnTelefonoProveedor){
+            escenarioPrincipal.menuTelefonoProveedorView();
+        }if(event.getSource() == btnEmailProveedor){
+            escenarioPrincipal.menuEmailProveedorView();
         }if(event.getSource() == btnProgramador)
             escenarioPrincipal.prograView();
     }

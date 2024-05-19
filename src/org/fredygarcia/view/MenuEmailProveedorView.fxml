@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fredygarcia.controller.MenuEmailProveedorController">
+   <children>
+      <ImageView fitHeight="452.0" fitWidth="752.0">
+         <image>
+            <Image url="@../images/MenuEmailProveedor.png" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="38.0" layoutY="225.0" prefHeight="156.0" prefWidth="110.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#Agregar" prefWidth="150.0" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Agregar" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefWidth="150.0" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Eliminar" GridPane.rowIndex="1" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefWidth="150.0" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Editar" GridPane.rowIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reporte" prefWidth="150.0" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Reportes" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Button fx:id="btnMenuK" layoutX="43.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="100.0" style="-fx-background-color: #012340;" styleClass="button-regresar" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Menu" />
+      <TableView fx:id="tblEmailProveedor" layoutX="162.0" layoutY="190.0" onMouseClicked="#seleccionarElementos" prefHeight="225.0" prefWidth="560.0">
+        <columns>
+          <TableColumn fx:id="colIDEmailProveedor" minWidth="140.0" prefWidth="140.0" text="IDEmailProveedor" />
+          <TableColumn fx:id="colEmailProveedor" minWidth="140.0" prefWidth="140.0" text="emailProveedor" />
+            <TableColumn fx:id="colDescripcion" minWidth="140.0" prefWidth="140.0" text="descripcion" />
+            <TableColumn fx:id="colIDProveedor" minWidth="140.0" prefWidth="140.0" text="IDProveedor" />
+        </columns>
+      </TableView>
+      <GridPane layoutX="93.0" layoutY="32.0" prefHeight="146.0" prefWidth="374.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.20001220703125" minWidth="10.0" prefWidth="147.00001525878906" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.3999481201172" minWidth="10.0" prefWidth="226.99998474121094" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="208.0" prefWidth="458.0" text="IDEmailProveedor" textFill="WHITE" />
+            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="208.0" prefWidth="458.0" text="emailProveedor" textFill="WHITE" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" layoutX="10.0" layoutY="46.0" prefHeight="208.0" prefWidth="458.0" text="descripcion" textFill="WHITE" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" layoutX="10.0" layoutY="83.0" prefHeight="208.0" prefWidth="458.0" text="IDProveedor" textFill="WHITE" GridPane.rowIndex="3" />
+            <TextField fx:id="txtIDEmailProveedor" GridPane.columnIndex="1" />
+            <TextField fx:id="txtEmailProveedor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtDescripcion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbIDProveedor" prefHeight="26.0" prefWidth="356.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

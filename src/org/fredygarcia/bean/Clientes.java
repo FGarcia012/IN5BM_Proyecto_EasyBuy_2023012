@@ -86,4 +86,9 @@ public class Clientes {
     public void setCorreoClientes(String correoClientes) {
         this.correoClientes = correoClientes;
     }
+    
+    @Override
+    public String toString() {
+        return getIDClientes() + "    |   " + getNombreClientes() + "    |   " + getApellidosClientes() + "    |   " + getNITClientes() + "    |   " + getTelefonoClientes() + "    |   " + getDireccionClientes() + "    |   " + getCorreoClientes();
+    }
 }

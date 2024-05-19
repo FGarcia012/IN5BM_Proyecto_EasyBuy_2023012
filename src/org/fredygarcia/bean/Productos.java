@@ -106,4 +106,9 @@ public class Productos {
     public void setIDProveedor(int IDProveedor) {
         this.IDProveedor = IDProveedor;
     }
+    
+    @Override
+    public String toString() {
+        return getIDProductos() + "    |   " + getDescProducto() + "    |   " + getPrecioUnitario() + "    |   " + getPrecioDocena() + "    |   " + getPrecioMayor() + "    |   " + getImagenProducto() + "    |   " + getExistencia() + "    |   " + getIDTipoProducto() + "    |   " + getIDProveedor();
+    }
 }

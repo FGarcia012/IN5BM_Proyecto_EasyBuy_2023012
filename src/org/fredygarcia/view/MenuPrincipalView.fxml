@@ -22,9 +22,15 @@
               <MenuItem id="Tipo de Productos" fx:id="btnTipoProductos" mnemonicParsing="false" onAction="#handleButtonAction" text="Tipo De Productos" />
                   <MenuItem id="Proveedores" fx:id="btnProveedores" mnemonicParsing="false" onAction="#handleButtonAction" text="Proveedores" />
                   <MenuItem id="Clientes" fx:id="btnClientes" mnemonicParsing="false" onAction="#handleButtonAction" text="Clientes" />
-                  <MenuItem id="Empleados" fx:id="btnEmpleados" mnemonicParsing="false" onAction="#handleButtonAction" text="Empleados" />
+                  <MenuItem id="Cargo Empleados" fx:id="btnCargoEmpleados" mnemonicParsing="false" onAction="#handleButtonAction" text="Cargo Empleados" />
                   <MenuItem id="Compras" fx:id="btnCompras" mnemonicParsing="false" onAction="#handleButtonAction" text="Compras" />
                   <MenuItem id="Productos" fx:id="btnProductos" mnemonicParsing="false" onAction="#handleButtonAction" text="Productos" />
+                  <MenuItem id="Empleados" fx:id="btnEmpleados" mnemonicParsing="false" onAction="#handleButtonAction" text="Empleados" />
+                  <MenuItem id="Factura" fx:id="btnFactura" mnemonicParsing="false" onAction="#handleButtonAction" text="Factura" />
+                  <MenuItem id="Detalle De Factura" fx:id="btnDetalleFactura" mnemonicParsing="false" onAction="#handleButtonAction" text="Detalle de Factura" />
+                  <MenuItem id="Detalle De Compra" fx:id="btnDetalleCompra" mnemonicParsing="false" onAction="#handleButtonAction" text="Detalle de Compra" />
+                  <MenuItem id="Telefono De Proveedores" fx:id="btnTelefonoProveedor" mnemonicParsing="false" onAction="#handleButtonAction" text="Telefono De Provedores" />
+                  <MenuItem id="Email De Proveedores" fx:id="btnEmailProveedor" mnemonicParsing="false" onAction="#handleButtonAction" text="Email De Proveedores" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Reportes">
