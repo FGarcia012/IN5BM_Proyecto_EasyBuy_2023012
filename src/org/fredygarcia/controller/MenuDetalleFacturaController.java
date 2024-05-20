@@ -61,6 +61,12 @@ public class MenuDetalleFacturaController implements Initializable {
 
     @FXML
     private Button btnMenuH;
+    
+    @FXML
+    private Button btnFactura;
+
+    @FXML
+    private Button btnProductos;
 
     @FXML
     private TextField txtIDDetalleFactura;
@@ -393,6 +399,22 @@ public class MenuDetalleFacturaController implements Initializable {
         }
     }
 
+    public Button getBtnFactura() {
+        return btnFactura;
+    }
+
+    public void setBtnFactura(Button btnFactura) {
+        this.btnFactura = btnFactura;
+    }
+
+    public Button getBtnProductos() {
+        return btnProductos;
+    }
+
+    public void setBtnProductos(Button btnProductos) {
+        this.btnProductos = btnProductos;
+    }
+
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
@@ -405,6 +427,10 @@ public class MenuDetalleFacturaController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnMenuH) {
             escenarioPrincipal.menuPrincipalView();
+        }if (event.getSource() == btnFactura) {
+            escenarioPrincipal.menuFacturaView();
+        }if (event.getSource() == btnProductos) {
+            escenarioPrincipal.menuProductosView();
         }
     }
 }

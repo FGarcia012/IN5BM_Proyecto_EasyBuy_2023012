@@ -59,6 +59,9 @@ public class MenuEmailProveedorController implements Initializable {
 
     @FXML
     private Button btnMenuK;
+    
+    @FXML
+    private Button btnProveedores;
 
     @FXML
     private TextField txtIDEmailProveedor;
@@ -334,6 +337,14 @@ public class MenuEmailProveedorController implements Initializable {
         }
     }
 
+    public Button getBtnProveedores() {
+        return btnProveedores;
+    }
+
+    public void setBtnProveedores(Button btnProveedores) {
+        this.btnProveedores = btnProveedores;
+    }
+
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
@@ -346,6 +357,8 @@ public class MenuEmailProveedorController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnMenuK) {
             escenarioPrincipal.menuPrincipalView();
+        }if (event.getSource() == btnProveedores) {
+            escenarioPrincipal.menuProveedoresView();
         }
     }
 }

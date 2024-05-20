@@ -63,6 +63,9 @@ public class MenuEmpleadosController implements Initializable {
     private Button btnMenuF;
     
     @FXML
+    private Button btnCargoEmpleado;
+    
+    @FXML
     private TextField txtIDEmpleados;
 
     @FXML
@@ -370,6 +373,15 @@ public class MenuEmpleadosController implements Initializable {
                 break;
         }
     }
+
+    public Button getBtnCargoEmpleado() {
+        return btnCargoEmpleado;
+    }
+
+    public void setBtnCargoEmpleado(Button btnCargoEmpleado) {
+        this.btnCargoEmpleado = btnCargoEmpleado;
+    }
+    
     
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
@@ -383,6 +395,8 @@ public class MenuEmpleadosController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnMenuF) {
             escenarioPrincipal.menuPrincipalView();
+        }if (event.getSource() == btnCargoEmpleado) {
+            escenarioPrincipal.menuCargoEmpleadosView();
         }
     }
 }

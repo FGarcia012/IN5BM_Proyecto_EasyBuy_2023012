@@ -61,6 +61,12 @@ public class MenuProductosController implements Initializable {
 
     @FXML
     private Button btnMenuE;
+    
+    @FXML
+    private Button btnTipoProductos;
+    
+    @FXML 
+    private Button btnProveedores;
 
     @FXML
     private TextField txtIDProductos;
@@ -451,6 +457,22 @@ public class MenuProductosController implements Initializable {
         }
     }
 
+    public Button getBtnTipoProductos() {
+        return btnTipoProductos;
+    }
+
+    public void setBtnTipoProductos(Button btnTipoProductos) {
+        this.btnTipoProductos = btnTipoProductos;
+    }
+
+    public Button getBtnProveedores() {
+        return btnProveedores;
+    }
+
+    public void setBtnProveedores(Button btnProveedores) {
+        this.btnProveedores = btnProveedores;
+    }
+
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
@@ -463,6 +485,12 @@ public class MenuProductosController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnMenuE) {
             escenarioPrincipal.menuPrincipalView();
+        }
+        if (event.getSource() == btnTipoProductos) {
+            escenarioPrincipal.menuTipoProductosView();
+        }
+        if (event.getSource() == btnProveedores) {
+            escenarioPrincipal.menuProveedoresView();
         }
     }
 }

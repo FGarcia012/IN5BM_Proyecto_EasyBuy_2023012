@@ -61,6 +61,12 @@ public class MenuDetalleCompraController implements Initializable {
 
     @FXML
     private Button btnMenuI;
+    
+    @FXML
+    private Button btnProductos;
+
+    @FXML
+    private Button btnCompras;
 
     @FXML
     private TextField txtIDDetalleCompra;
@@ -389,6 +395,22 @@ public class MenuDetalleCompraController implements Initializable {
         }
     }
 
+    public Button getBtnProductos() {
+        return btnProductos;
+    }
+
+    public void setBtnProductos(Button btnProductos) {
+        this.btnProductos = btnProductos;
+    }
+
+    public Button getBtnCompras() {
+        return btnCompras;
+    }
+
+    public void setBtnCompras(Button btnCompras) {
+        this.btnCompras = btnCompras;
+    }
+
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
@@ -401,6 +423,10 @@ public class MenuDetalleCompraController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnMenuI) {
             escenarioPrincipal.menuPrincipalView();
+        }if (event.getSource() == btnProductos) {
+            escenarioPrincipal.menuProductosView();
+        }if (event.getSource() == btnCompras) {
+            escenarioPrincipal.menuComprasView();
         }
     }
 }

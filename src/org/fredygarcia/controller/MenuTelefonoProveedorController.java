@@ -50,6 +50,9 @@ public class MenuTelefonoProveedorController implements Initializable {
 
     @FXML
     private Button btnMenuJ;
+    
+    @FXML
+    private Button btnProveedores;
 
     @FXML
     private TextField txtIDTelefonoProveedor;
@@ -344,6 +347,14 @@ public class MenuTelefonoProveedorController implements Initializable {
         }
     }
 
+    public Button getBtnProveedores() {
+        return btnProveedores;
+    }
+
+    public void setBtnProveedores(Button btnProveedores) {
+        this.btnProveedores = btnProveedores;
+    }
+
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
@@ -356,6 +367,8 @@ public class MenuTelefonoProveedorController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnMenuJ) {
             escenarioPrincipal.menuPrincipalView();
+        }if (event.getSource() == btnProveedores) {
+            escenarioPrincipal.menuProveedoresView();
         }
     }
 }
