@@ -283,7 +283,7 @@ public class MenuDetalleFacturaController implements Initializable {
     public void guardar() {
         DetalleFactura registro = new DetalleFactura();
         registro.setIDDetalleFactura(Integer.parseInt(txtIDDetalleFactura.getText()));
-        registro.setPrecioUnitario(Double.parseDouble(txtPrecioUnitario.getText()));
+        registro.setPrecioUnitario(Double.parseDouble("0.00"));
         registro.setCantidad(Integer.parseInt(txtCantidad.getText()));
         registro.setNumFactura((((Factura) cmbNumFactura.getSelectionModel().getSelectedItem()).getNumFactura()));
         registro.setIDProductos(((Productos) cmbIDProductos.getSelectionModel().getSelectedItem()).getIDProductos());

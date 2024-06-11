@@ -222,7 +222,7 @@ public class MenuComprasController implements Initializable {
         registro.setNumDocumento(Integer.parseInt(txtNumDocumento.getText()));
         registro.setFechaDocumento(txtFechaDocumento.getText());
         registro.setDescripcion(txtDescripcion.getText());
-        registro.setTotalDocumento(Double.parseDouble(txtTotalDocumento.getText()));
+        registro.setTotalDocumento(Double.parseDouble("0.00"));
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarCompra(?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getNumDocumento());

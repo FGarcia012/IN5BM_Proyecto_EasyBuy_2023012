@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +28,7 @@ import org.fredygarcia.bean.Productos;
 import org.fredygarcia.bean.Proveedores;
 import org.fredygarcia.bean.TipoProducto;
 import org.fredygarcia.db.Conexion;
+import org.fredygarcia.report.GenerarReportes;
 import org.fredygarcia.system.Main;
 
 /**
@@ -326,9 +329,9 @@ public class MenuProductosController implements Initializable {
         Productos registro = new Productos();
         registro.setIDProductos(txtIDProductos.getText());
         registro.setDescProducto(txtDescProducto.getText());
-        registro.setPrecioUnitario(Double.parseDouble(txtPrecioUnitario.getText()));
-        registro.setPrecioDocena(Double.parseDouble(txtPrecioDocena.getText()));
-        registro.setPrecioMayor(Double.parseDouble(txtPrecioMayor.getText()));
+        registro.setPrecioUnitario(Double.parseDouble("0.00"));
+        registro.setPrecioDocena(Double.parseDouble("0.00"));
+        registro.setPrecioMayor(Double.parseDouble("0.00"));
         registro.setImagenProducto(txtImagenProducto.getText());
         registro.setExistencia(Integer.parseInt(txtExistencia.getText()));
         registro.setIDTipoProducto((((TipoProducto) cmbIDTipoProducto.getSelectionModel().getSelectedItem()).getIDTipoProducto()));
@@ -442,19 +445,27 @@ public class MenuProductosController implements Initializable {
     }
 
     @FXML
-    private void reporte() {
+    public void reporte() {
         switch (tipoDeOperaciones) {
+            case NULL:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
-                desactivarControles();
+            desactivarControles();
                 limpiarControles();
                 btnReporte.setText("Reporte");
-                btnEditar.setText("Editar");
+                btnEditar.setText("Editar"); 
                 btnAgregar.setDisable(false);
                 btnEliminar.setDisable(false);
                 tipoDeOperaciones = operaciones.NULL;
-            case NULL:
                 break;
         }
+    }
+    
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        parametros.put("IDProductos", null);
+        GenerarReportes.mostrarReportes("reporteProductos.jasper", "Reporte de productos", parametros);
     }
 
     public Button getBtnTipoProductos() {

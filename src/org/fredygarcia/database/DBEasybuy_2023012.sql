@@ -1057,3 +1057,27 @@ end$$
 delimiter ;
 
 call sp_EliminarEmailProveedor(1);
+
+-- -----------------------------------------
+DELIMITER $$
+
+CREATE TRIGGER CalcularPreciosDetalleCompra
+AFTER INSERT ON DetalleCompra
+FOR EACH ROW
+BEGIN
+    DECLARE precioProveedor DECIMAL(10,2);
+    DECLARE precioDocena DECIMAL(10,2);
+    DECLARE precioMayor DECIMAL(10,2);
+
+    SET precioProveedor = NEW.costoUnitario * 1.40;
+    SET precioDocena = precioProveedor * 1.35;
+    SET precioMayor = precioProveedor * 1.25;
+
+    UPDATE Productos
+    SET precioUnitario = NEW.costoUnitario,
+        precioDocena = precioDocena,
+        precioMayor = precioMayor
+    WHERE IDProductos = NEW.IDProductos;
+END $$
+
+DELIMITER ;
