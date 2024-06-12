@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
 import org.fredygarcia.bean.Proveedores;
 import org.fredygarcia.db.Conexion;
+import org.fredygarcia.report.GenerarReportes;
 import org.fredygarcia.system.Main;
 
 /**
@@ -260,6 +263,9 @@ public class MenuProveedoresController implements Initializable{
 
     public void reporte() {
         switch (tipoDeOperaciones) {
+            case NULL:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -268,9 +274,13 @@ public class MenuProveedoresController implements Initializable{
                 btnAgregar.setDisable(false);
                 btnEliminar.setDisable(false);
                 tipoDeOperaciones = operaciones.NULL;
-            case NULL:
-                break;
         }
+    }
+    
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        parametros.put("IDProductos", null);
+        GenerarReportes.mostrarReportes("reporteProveedores.jasper", "Reporte de proveedores", parametros);
     }
 
     public void guardar() {
