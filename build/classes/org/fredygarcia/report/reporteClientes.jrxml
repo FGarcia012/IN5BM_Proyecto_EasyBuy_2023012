@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteClientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="19146d31-08dd-4dd2-a708-ef3b2b66e5c5">
 	<property name="ireport.zoom" value="1.6105100000000123"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="672"/>
+	<property name="ireport.y" value="912"/>
 	<queryString>
 		<![CDATA[select * from Clientes]]>
 	</queryString>
@@ -156,13 +156,13 @@
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="195" splitType="Stretch">
+		<band height="389" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="175" width="100" height="20" uuid="2146e12e-0c5d-4a77-b542-f5443e2e23c8"/>
+				<reportElement x="0" y="369" width="100" height="20" uuid="2146e12e-0c5d-4a77-b542-f5443e2e23c8"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="490" y="175" width="65" height="20" uuid="5b594d8f-7a73-45d5-a578-cee458864344"/>
+				<reportElement x="490" y="369" width="65" height="20" uuid="5b594d8f-7a73-45d5-a578-cee458864344"/>
 				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>

@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +28,7 @@ import org.fredygarcia.bean.Clientes;
 import org.fredygarcia.bean.Empleados;
 import org.fredygarcia.bean.Factura;
 import org.fredygarcia.db.Conexion;
+import org.fredygarcia.report.GenerarReportes;
 import org.fredygarcia.system.Main;
 
 /**
@@ -400,6 +403,9 @@ public class MenuFacturaController implements Initializable{
     @FXML
     private void reporte() {
         switch (tipoDeOperaciones) {
+            case NULL:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -408,10 +414,16 @@ public class MenuFacturaController implements Initializable{
                 btnAgregar.setDisable(false);
                 btnEliminar.setDisable(false);
                 tipoDeOperaciones = operaciones.NULL;
-            case NULL:
                 break;
         }
     }
+    
+    public void imprimirReporte(){
+            Map parametros = new HashMap();
+            int IDFac = ((Factura)tblFactura.getSelectionModel().getSelectedItem()).getNumFactura();
+            parametros.put(IDFac, IDFac);
+            GenerarReportes.mostrarReportes("reporteFactura.jasper", "Reporte de Factura", parametros);
+        }
 
     public Button getBtnClientes() {
         return btnClientes;
