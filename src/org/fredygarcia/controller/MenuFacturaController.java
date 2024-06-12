@@ -421,7 +421,7 @@ public class MenuFacturaController implements Initializable{
     public void imprimirReporte(){
             Map parametros = new HashMap();
             int IDFac = ((Factura)tblFactura.getSelectionModel().getSelectedItem()).getNumFactura();
-            parametros.put(IDFac, IDFac);
+            parametros.put("IDFac", IDFac);
             GenerarReportes.mostrarReportes("reporteFactura.jasper", "Reporte de Factura", parametros);
         }
 

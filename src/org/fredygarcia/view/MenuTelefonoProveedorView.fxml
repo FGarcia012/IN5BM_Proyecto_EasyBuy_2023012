@@ -72,6 +72,6 @@
             <ComboBox fx:id="cmbIDProveedor" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Button fx:id="btnProveedores" layoutX="44.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="120.0" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Proveedores" />
+      <Button fx:id="btnProveedores" layoutX="46.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="120.0" style="-fx-background-color: #012340;" stylesheets="@../resource/EasyBuy_2023012CSS.css" text="Proveedores" />
    </children>
 </AnchorPane>
