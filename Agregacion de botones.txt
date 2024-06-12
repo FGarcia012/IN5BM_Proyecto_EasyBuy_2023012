@@ -1,1 +1,0 @@
-Las vistan que contenían combobox, se le coloco su respectivo botón a la vista a la cual llama con el combobox :)

@@ -1,1 +1,0 @@
-Se termino de agregar todos los controller de las vistas con ferign key :]

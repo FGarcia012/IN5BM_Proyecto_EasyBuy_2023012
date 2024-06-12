@@ -1,1 +1,0 @@
-Se actualizo la data base de MYSQL, se colocaron todas las tablas con sus respectivos procedimientos almacenados de las tablas que tienen llave foránea :)

@@ -1,1 +1,0 @@
-Se agregaron el resto de vistas que llaman q conitenen foreign key :)
